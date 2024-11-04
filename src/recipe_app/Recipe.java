@@ -9,7 +9,8 @@ import java.util.LinkedList;
 public class Recipe {
 	
 	private String title;	//REQUIRED
-	private LinkedList<Ingredient> ingredients;
+	private IngredientList ingredients;
+	//private LinkedList<Ingredient> ingredients;
 	private String directions;
 	private String userNote;
 	private boolean isGF;	//is Gluten Free
@@ -22,6 +23,9 @@ public class Recipe {
 	 */
 	public Recipe(String title) {
 		this.title = title;
+		this.ingredients = new IngredientList();
+		this.directions = "";
+		this.userNote = "";
 	}
 	//Constructor without user note
 	/**
@@ -29,10 +33,11 @@ public class Recipe {
 	 * @param ingredients
 	 * @param directions
 	 */
-	public Recipe(String title, LinkedList<Ingredient> ingredients, String directions) {
+	public Recipe(String title, IngredientList ingredients, String directions) {
 		this.title = title;
 		this.ingredients = ingredients;
 		this.directions = directions;
+		this.userNote = "";
 	}
 	//Constructor with all fields except bools
 	/**
@@ -41,15 +46,13 @@ public class Recipe {
 	 * @param directions
 	 * @param userNote
 	 */
-	public Recipe(String title, LinkedList<Ingredient> ingredients, String directions, String userNote) {
+	public Recipe(String title, IngredientList ingredients, String directions, String userNote) {
 		this.title = title;
 		this.ingredients = ingredients;
 		this.directions = directions;
 		this.userNote = userNote;
 	}
 	//Constructor with all fields
-	
-	
 	/**
 	 * @return the title
 	 */
@@ -65,7 +68,7 @@ public class Recipe {
 	 * @param isVegan
 	 * @param isVegetarian
 	 */
-	public Recipe(String title, LinkedList<Ingredient> ingredients, String directions, String userNote, boolean isGF,
+	public Recipe(String title, IngredientList ingredients, String directions, String userNote, boolean isGF,
 			boolean isVegan, boolean isVegetarian) {
 		this.title = title;
 		this.ingredients = ingredients;
@@ -84,13 +87,13 @@ public class Recipe {
 	/**
 	 * @return the ingredients
 	 */
-	public LinkedList<Ingredient> getIngredients() {
+	public IngredientList getIngredients() {
 		return ingredients;
 	}
 	/**
 	 * @param ingredients the ingredients to set
 	 */
-	public void setIngredients(LinkedList<Ingredient> ingredients) {
+	public void setIngredients(IngredientList ingredients) {
 		this.ingredients = ingredients;
 	}
 	/**
@@ -154,9 +157,22 @@ public class Recipe {
 		this.isVegetarian = isVegetarian;
 	}
 	
+	public void addIngredient(Ingredient newIng) {
+		ingredients.addIngredient(newIng);
+	}
+	
+	public String displayIngredients() {
+		String display = new String();
+		for (int i = 0; i < ingredients.getSize(); i++) {
+			display += ingredients.getIngredient(i) + "\n";
+		}
+		return display;
+	}
+	
+	//TODO needs fine tuning
 	@Override
 	public String toString() {
-		return "Recipe [title=" + title + ", ingredients=" + ingredients + ", directions=" + directions + ", userNote="
+		return title + "\n" + "Ingredients:\n" + ingredients.displayIngredients() + "Directions:\n" + directions + "\nuserNote="
 				+ userNote + ", isGF=" + isGF + ", isVegan=" + isVegan + ", isVegetarian=" + isVegetarian + "]";
 	}
 	
