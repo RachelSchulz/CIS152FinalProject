@@ -46,6 +46,16 @@ public class IngredientList {
 		ingredientList.addLast(newIng);
 	}
 	
+	public void removeIngredient(int i) throws EmptyListException, IndexOutOfBoundsException {
+		if (ingredientList.size() == 0) {
+			throw new EmptyListException();
+		}
+		else if (ingredientList.size() > i) {
+			throw new IndexOutOfBoundsException();
+		}
+		ingredientList.remove(i);
+	}
+	
 	public String displayIngredients() {
 		String display = new String();
 		for (int i = 0; i < ingredientList.size(); i++) {
@@ -58,7 +68,13 @@ public class IngredientList {
 		return ingredientList.size();
 	}
 	
-	public Ingredient getIngredient(int i) {	//TODO throw error
+	public Ingredient getIngredient(int i) throws EmptyListException, IndexOutOfBoundsException {	
+		if (ingredientList.size() == 0) {
+			throw new EmptyListException();
+		}
+		else if (ingredientList.size() > i) {
+			throw new IndexOutOfBoundsException();
+		}
 		return ingredientList.get(i);
 	}
 }

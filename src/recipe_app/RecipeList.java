@@ -38,9 +38,10 @@ public class RecipeList {
 	 */
 	public String displayAllRecipes() {
 		String recipeString = new String();
-		//recipes.sortRecipes();	//WHY IS METHOD UNDEFINED FOR TYPE ARRAYLIST<RECIPE> FIX ME!
+		recipes.sort(new RecipeComparator());
+		//recipes.sortRecipes();	//WHY IS METHOD UNDEFINED FOR TYPE ARRAYLIST<RECIPE> FIX ME
 		for (Recipe r : recipes) {
-			recipeString += r.getTitle() + "\n|";
+			recipeString += r.getTitle() + "\n";
 		}
 		return recipeString;
 	}
@@ -71,8 +72,10 @@ public class RecipeList {
 	/**
 	 * @return ArrayList<Recipe> with all recipes that contain ingredient in IngredientList
 	 * returns empty ArrayList if not found
+	 * @throws EmptyListException 
+	 * @throws IndexOutOfBoundsException 
 	 */
-	public ArrayList<Recipe> searchRecipeByIngredient(String ing) {
+	public ArrayList<Recipe> searchRecipeByIngredient(String ing) throws IndexOutOfBoundsException, EmptyListException {
 		ArrayList<Recipe> results = new ArrayList<Recipe>();
 		for (int i = 0; i < recipes.size(); i++) {
 			if (recipes.get(i).displayIngredients().toLowerCase().contains(ing.toLowerCase())) {	//if ingredients list of recipe contains ingredient
@@ -99,6 +102,7 @@ public class RecipeList {
 	
 	/**
 	 * sorts recipes in list in ascending order by title
+	 * Uses ArrayList's sort method with Comparator that defines sort by recipe title
 	 */
 	public void sortRecipes() {
 		recipes.sort(new RecipeComparator());

@@ -161,7 +161,7 @@ public class Recipe {
 		ingredients.addIngredient(newIng);
 	}
 	
-	public String displayIngredients() {
+	public String displayIngredients() throws IndexOutOfBoundsException, EmptyListException {
 		String display = new String();
 		for (int i = 0; i < ingredients.getSize(); i++) {
 			display += ingredients.getIngredient(i) + "\n";

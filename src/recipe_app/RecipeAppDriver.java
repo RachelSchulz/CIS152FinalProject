@@ -25,10 +25,10 @@ public class RecipeAppDriver {
 	/**
 	 * @param args
 	 */
-	public static void main(String[] args) {
+	public static void main(String[] args) throws EmptyListException {
 		
 		Ingredient carrots = new Ingredient("carrots", 1.5, "cups", "diced");
-		Ingredient onions = new Ingredient("onions", 1, "cup", "chopped");
+		Ingredient onions = new Ingredient("onions", .25, "cup", "finely chopped");
 		Ingredient celery = new Ingredient("celery");
 		Ingredient lettuce = new Ingredient("lettuce", 3, "cups");
 		Ingredient ranch = new Ingredient("Ranch dressing", 1.5, "cups");
@@ -40,6 +40,19 @@ public class RecipeAppDriver {
 		ingredients.addIngredient(ranch);
 		Recipe salad = new Recipe("Big Salad", ingredients, "Combine all ingredients in large bowl");
 		System.out.println(salad.toString());
+		Recipe soup = new Recipe("Yummy Soup");
+		Ingredient soupCarrots = new Ingredient("carrots", 1.5, "cups", "diced");
+		Ingredient soupOnions = new Ingredient("onions", 1, "cup", "chopped");
+		Ingredient soupCelery = new Ingredient("celery");
+		soup.addIngredient(soupCarrots);
+		soup.addIngredient(soupOnions);
+		soup.addIngredient(soupCelery);
+		System.out.println(soup.toString());
+		RecipeList myList = new RecipeList();
+		myList.addRecipe(salad);
+		myList.addRecipe(soup);
+		System.out.println(myList.displayAllRecipes());
+
 	}
 
 }

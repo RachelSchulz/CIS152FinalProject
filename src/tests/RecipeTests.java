@@ -9,6 +9,7 @@ import java.util.LinkedList;
 
 import org.junit.Test;
 
+import recipe_app.EmptyListException;
 import recipe_app.Ingredient;
 import recipe_app.IngredientList;
 import recipe_app.Recipe;
@@ -17,7 +18,7 @@ import recipe_app.Recipe;
  */
 public class RecipeTests {
 	@Test
-	public void displayIngredientsList() {
+	public void displayIngredientsList() throws IndexOutOfBoundsException, EmptyListException {
 		//ARRANGE
 		Recipe soup = new Recipe("Yummy Soup");
 		Ingredient carrots = new Ingredient("carrots", 1.5, "cups", "diced");
@@ -35,7 +36,7 @@ public class RecipeTests {
 	}
 	
 	@Test
-	public void addRecipeWithIngList() {
+	public void addRecipeWithIngList() throws IndexOutOfBoundsException, EmptyListException {
 		//ARRANGE
 		Ingredient carrots = new Ingredient("carrots", 1.5, "cups", "diced");
 		Ingredient onions = new Ingredient("onions", 1, "cup", "chopped");
