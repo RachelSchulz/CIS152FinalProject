@@ -6,8 +6,17 @@ package recipe_app;
 
 import java.util.LinkedList;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 public class Recipe {
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int Id;
 	private String title;	//REQUIRED
 	private IngredientList ingredients;
 	//private LinkedList<Ingredient> ingredients;
