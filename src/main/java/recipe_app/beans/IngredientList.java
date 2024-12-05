@@ -29,8 +29,8 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class IngredientList {
 	
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	//@Id
+	//@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int ingListID;
 	private LinkedList<String> ingredientList;
 

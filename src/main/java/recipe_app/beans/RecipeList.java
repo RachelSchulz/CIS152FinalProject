@@ -22,8 +22,7 @@ import recipe_app.EmptyListException;
 @AllArgsConstructor
 public class RecipeList {
 	
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	
 	private int recipeListID;
 	private ArrayList<Recipe> recipes;
 	
@@ -61,6 +60,7 @@ public class RecipeList {
 		String recipeString = new String();
 		recipes.sort(new RecipeComparator());
 		for (Recipe r : recipes) {
+			recipeString += "ID " + r.getId() + ": ";
 			recipeString += r.getTitle() + "\n";
 		}
 		return recipeString;
@@ -130,4 +130,13 @@ public class RecipeList {
 		recipes.sort(new RecipeComparator());
 	}
 	
+	public String displayRecipeByID(int searchedId) {
+		String result = "Recipe not found";
+		for (int i = 0; i < recipes.size(); i++) {
+			if (recipes.get(i).getId() == searchedId) {
+				result = recipes.get(i).toString();
+			}
+		}
+		return result;
+	}
 }

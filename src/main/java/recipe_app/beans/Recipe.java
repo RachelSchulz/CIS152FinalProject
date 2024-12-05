@@ -23,9 +23,10 @@ import recipe_app.EmptyListException;
 @Table(name="recipe")
 @Data
 public class Recipe {
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	//@Id
+	//@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
+	private static int idCounter = 0;
 	private String title;	
 	@ManyToOne(cascade = CascadeType.ALL)
 	private IngredientList ingredients;
@@ -37,10 +38,13 @@ public class Recipe {
 	
 	//Default Constructor
 	public Recipe() {
+		this.id = idCounter;
+		idCounter++;
 		this.title = "";
 		this.ingredients = new IngredientList();
 		this.directions = "";
 		this.userNote = "";
+		
 	}
 	
 	//Constructor title only
@@ -48,6 +52,8 @@ public class Recipe {
 		 * @param title
 		 */
 		public Recipe(String title) {
+			this.id = idCounter;
+			idCounter++;
 			this.title = title;
 			this.ingredients = new IngredientList();
 			this.directions = "";
@@ -60,6 +66,8 @@ public class Recipe {
 		 * @param directions
 		 */
 		public Recipe(String title, IngredientList ingredients, String directions) {
+			this.id = idCounter;
+			idCounter++;
 			this.title = title;
 			this.ingredients = ingredients;
 			this.directions = directions;
@@ -73,6 +81,8 @@ public class Recipe {
 		 * @param userNote
 		 */
 		public Recipe(String title, IngredientList ingredients, String directions, String userNote) {
+			this.id = idCounter;
+			idCounter++;
 			this.title = title;
 			this.ingredients = ingredients;
 			this.directions = directions;
@@ -91,6 +101,8 @@ public class Recipe {
 		 */
 		public Recipe(String title, IngredientList ingredients, String directions, String userNote, boolean isGF,
 				boolean isVegan, boolean isVegetarian) {
+			this.id = idCounter;
+			idCounter++;
 			this.title = title;
 			this.ingredients = ingredients;
 			this.directions = directions;

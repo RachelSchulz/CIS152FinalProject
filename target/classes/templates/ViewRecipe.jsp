@@ -9,10 +9,14 @@
 <body>
 	<div class="container">
 		<div>
-			<h2><p th:text=${viewRecipe.title} ></p></h2>
-			<p>TODO display ingredients here</p>
+			<h2 th:text=${viewRecipe.title} ></h2>
+			<p th:each="ingredient : ${viewRecipe.ingredients}"
+				th:text="${ingredient}"></p>
+			Directions: <p th:text="${viewRecipe.directions}"></p>
 			User note: <p th:text=${viewRecipe.userNote}></p>
-			<p>TODO dynamically add whether recipe has attributes gf, vegan, etc</p>
+			<p th:case="#{viewRecipe.isGF }">Gluten Free</p>
+			<p th:case="#{viewRecipe.isVegan }">Vegan</p>
+			<p th:case="#{viewRecipe.isVegetarian }">Vegetarian</p>
 	</div>
 	
 	<a href="Index">Home</a>
