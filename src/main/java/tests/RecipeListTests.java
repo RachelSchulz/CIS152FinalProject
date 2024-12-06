@@ -73,6 +73,8 @@ public class RecipeListTests {
 	}
 	
 	//Test that recipes are sorted alphabetically by title
+	//for test to work properly in console version with 3 recipes seeded in main, add 3 to expected indices
+	//test needs to be modified when using Lombok to auto-generate IDs
 	@Test
 	public void displayRecipesInList() {
 		//ARRANGE
@@ -80,7 +82,7 @@ public class RecipeListTests {
 		Recipe r2 = new Recipe("Apple Pie");
 		Recipe r3 = new Recipe("Banana Pudding");
 		Recipe r4 = new Recipe("Yummy Soup");
-		String expected = "Apple Pie\nBanana Pudding\nTofu Scramble\nYummy Soup\n";
+		String expected = "ID 4: Apple Pie\nID 5: Banana Pudding\nID 3: Tofu Scramble\nID 6: Yummy Soup\n";
 		String actual;
 		RecipeList rlist = new RecipeList();
 		rlist.addRecipe(r1);
@@ -90,6 +92,6 @@ public class RecipeListTests {
 		//ACT
 		actual = rlist.displayAllRecipes();
 		//ASSERT
-		assertEquals(actual, expected);
+		assertEquals(expected, actual);
 	}
 }

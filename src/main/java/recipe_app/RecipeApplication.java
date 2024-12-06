@@ -71,11 +71,10 @@ public class RecipeApplication {
 		
 		//Welcome user and get input
 		System.out.println("Welcome to My Favorite Recipes!");
-		System.out.println("Please choose from the following options: Enter 'V' to view all recipes, enter 'A' to add a recipe. 'Q' to quit");
-		
-		
+		System.out.println("Please choose from the following options: Enter 'V' to view all recipes, enter 'A' to add a recipe. 'Q' to quit");	
 		userInput = sc.nextLine();
 		while (userInput.toUpperCase().charAt(0) != 'Q') {
+			//View List of Recipes
 			while (userInput.toUpperCase().charAt(0) == 'V') {
 				System.out.println(myList.displayAllRecipes());
 				System.out.println("To view a specific recipe, please enter 'R'");
@@ -83,6 +82,7 @@ public class RecipeApplication {
 				System.out.println("To quit enter 'Q'");
 				userInput = sc.nextLine();
 			}
+			//View Specific Recipe
 			while (userInput.toUpperCase().charAt(0) == 'R') {
 				System.out.println("Enter the ID number for the recipe you want to view");
 				int userInt = sc.nextInt();
@@ -95,6 +95,7 @@ public class RecipeApplication {
 				System.out.println("Please enter 'V' to view all recipes, enter 'A' to add a recipe, or enter 'Q' to quit.");
 				userInput = sc.nextLine();
 			}
+			//Add A Recipe
 			while (userInput.toUpperCase().charAt(0) == 'A') {
 				String title;
 				String directions;
@@ -154,6 +155,7 @@ public class RecipeApplication {
 				System.out.println("To quit enter 'Q'");
 				userInput = sc.nextLine();
 			}
+			//Handle bad menu input
 			while (userInput.toUpperCase().charAt(0) != 'Q' && userInput.toUpperCase().charAt(0) != 'R' && userInput.toUpperCase().charAt(0) != 'V'
 					&& userInput.toUpperCase().charAt(0) != 'A') {
 					System.out.println("Sorry, I didn't get that. Please choose from the following: ");
@@ -161,10 +163,10 @@ public class RecipeApplication {
 					System.out.println("To add another recipe enter 'A'");
 					System.out.println("To quit enter 'Q'");
 					userInput = sc.nextLine();
-				
 			}
 		}
 		
+		//Close out program
 		System.out.println("Thank you for using the My Favorite Recipes app! Happy eating!");
 		
 	}
