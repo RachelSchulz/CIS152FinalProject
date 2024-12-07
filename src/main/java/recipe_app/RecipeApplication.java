@@ -125,7 +125,9 @@ public class RecipeApplication {
 					System.out.println("Must enter Y or N");
 					input = sc.nextLine();
 				}
-				
+				if (input.toUpperCase().charAt(0) == 'Y') {
+					gf = true;
+				}
 				System.out.println("Is the recipe vegan? 'Y' or 'N' ");
 				input = sc.nextLine();
 				while (input.toUpperCase().charAt(0) != 'Y' && input.toUpperCase().charAt(0) != 'N') {

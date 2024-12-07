@@ -26,7 +26,7 @@ public class IngredientListTests {
 		ingList.addIngredient(ingred1);
 		int expected = 1;
 		int actual = ingList.getSize();
-		;
+		
 		// ASSERT
 		assertEquals(actual, expected);
 	}
